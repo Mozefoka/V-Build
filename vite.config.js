@@ -10,7 +10,6 @@ const PAGES = fs.readdirSync('./pages');
 const getInputs = () => {
     return PAGES.reduce((inputs, page) => {
         inputs[page.replace('.html', '')] = path.resolve(__dirname, `./pages/${page}`);
-
         return inputs;
     }, {});
 }
@@ -24,6 +23,7 @@ export default defineConfig({
             "@": fileURLToPath(new URL("./src", import.meta.url)),
         },
     },
+    base: '//',
     build: {
         rollupOptions: {
             input: {
